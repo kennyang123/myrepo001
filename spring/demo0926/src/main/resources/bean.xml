@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 配置业务层 -->
+    <bean id="accountService" class="kenny.account.service.impl.AccountServiceImpl">
+        <property name="accountDao" ref="accountDao"/>
+        <property name="transactionManager" ref="transactionManager"/>
+    </bean>
+    <!-- 配置持久层 -->
+    <bean id="accountDao" class="kenny.account.dao.impl.AccountDaoImpl">
+        <property name="runner" ref="runner"/>
+        <property name="connectionUtils" ref="connectionUtils"/>
+    </bean>
+    <!-- 配置QueryRunner -->
+    <bean id="runner" class="org.apache.commons.dbutils.QueryRunner"/>
+    <!-- 配置connectionUtils -->
+    <bean id="connectionUtils" class="kenny.account.utils.ConnectionUtils">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <bean id="transactionManager" class="kenny.account.utils.TransactionManager">
+        <property name="connectionUtils" ref="connectionUtils"/>
+    </bean>
+
+    <!-- 配置数据源 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value=""/>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/spring_test?serverTimezone=UTC"/>
+        <property name="user" value="root"/>
+        <property name="password" value="abc123"/>
+    </bean>
+</beans>
