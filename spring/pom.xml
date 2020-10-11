@@ -11,6 +11,7 @@
         <module>demo0926</module>
         <module>demo0927</module>
         <module>demo0928</module>
+        <module>demo092802</module>
     </modules>
     <packaging>pom</packaging>
 

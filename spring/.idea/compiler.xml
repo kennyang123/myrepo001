@@ -9,6 +9,7 @@
         <module name="demo0926" />
         <module name="demo0927" />
         <module name="demo0928" />
+        <module name="demo092802" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
