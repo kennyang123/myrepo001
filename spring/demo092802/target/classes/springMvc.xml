@@ -10,11 +10,12 @@
         http://www.springframework.org/schema/context
         https://www.springframework.org/schema/context/spring-context.xsd">
     <context:component-scan base-package="kenny.account"/>
-
+    <!-- 配置视图解析器-->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+    <!-- 注册服务：自定义类型转换器：Stirng to Date-->
     <bean id="converterService" class="org.springframework.context.support.ConversionServiceFactoryBean">
         <property name="converters">
             <set>
